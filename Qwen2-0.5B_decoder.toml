@@ -1,0 +1,38 @@
+[parse]
+net_name = 'Qwen2-0.5B'
+framework = 'onnx'
+network = './fmodel/qwen2_exported_model_cuda/model.onnx'
+network_exdata  = './fmodel/qwen2_exported_model_cuda/model.onnx.data'
+jr_path = './jr_path/decode/' 
+max_prompt_length = 32
+max_tokens_length = 512
+target = 'zhuge'
+llm_mode = true
+quantized = true
+
+[optimize]
+target = 'zhuge'
+json = './jr_path/decode//Qwen2-0.5B-decoder_parsed.json'
+raw = './jr_path/decode//Qwen2-0.5B-decoder_parsed.raw'
+jr_path = './jr_path/decode/'  
+
+[quantize]
+json = './jr_path/decode//Qwen2-0.5B-decoder_optimized.json'
+raw = './jr_path/decode//Qwen2-0.5B-decoder_optimized.raw'
+jr_path = './jr_path/decode/' 
+qdtype = "fp16"
+target = "zhuge"
+
+[adapt]
+target = 'zhuge'
+json = './jr_path/decode//Qwen2-0.5B-decoder_quantized.json'
+raw = './jr_path/decode//Qwen2-0.5B-decoder_quantized.raw'
+jr_path = './jr_path/decode/'
+pass_off = "icraft.MergeTransDataOpSeqPass"
+
+[generate]
+json = './jr_path/decode//Qwen2-0.5B-decoder_adapted.json'
+raw = './jr_path/decode//Qwen2-0.5B-decoder_adapted.raw'
+jr_path = './jr_path/decode/' 
+
+
