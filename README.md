@@ -12,3 +12,12 @@
 - `fmodel/qwen2_exported_model_cuda/tokenizer.json`（11.4 MB，LFS）——`config/Qwen2-0___5B-Instruct/tokenizer.json`(7.0 MB) 是同内容非 LFS 副本，无损失。
 
 编译器用本机 iCraft 3.39.0（厂商自述 3.36.1）。完整记录见 `repos/lang/llm/Qwen2/README.md`。
+
+## 出处 / Provenance
+
+- **上游（镜像来源）**：[AIBS/Qwen2_0.5B_zg3.36.1_axi_demo @ ModelScope](https://www.modelscope.cn/AIBS/Qwen2_0.5B_zg3.36.1_axi_demo) —— 厂商 FMSH 悟净 FMQL30TAI(ZG330) Qwen2-0.5B 上板示例，自述适配 iCraft 3.36.1
+- **上游 commit**：`664a4c4`（"feat: 新增适用于v3.36.1的Qwen2_0.5B-axi上板示例"），本仓于 2026-11-04 镜像
+- **本仓相对上游的改动**：3 个文件、6 行（见上方「合并改动」）：驱动删 `calctime_utils` import 并补 `token_dynamic_fm` 2→3 元素；`modelzoo_utils/pyrtutils/__init__.py` 与 `utils/tools.py` 去 pandas/matplotlib import。编译器用本机 iCraft 3.39.0（非上游 3.36.1）
+- **排除件**：`fmodel/qwen2_exported_model_cuda/model.onnx.data`（1.27 GB, LFS）与 `tokenizer.json`（11.4 MB, LFS）——均可从上游 `git lfs pull` 重新取得；`config/Qwen2-0___5B-Instruct/tokenizer.json`（7.0 MB）为同内容非 LFS 副本
+- **上游 LICENSE**：Apache-2.0（`Copyright 2024 Alibaba Cloud`），见本仓根目录 `LICENSE`（与上游 `config/Qwen2-0___5B-Instruct/LICENSE` 同文）
+- **完整记录**：`repos/lang/llm/Qwen2/README.md`（WCIS 项目内）
