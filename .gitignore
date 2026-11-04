@@ -1,0 +1,22 @@
+# ---- 排除的 LFS 权重（从上游 ModelScope 用 `git lfs pull` 重新取得，不入库）----
+# 2026-11-04 决定：model.onnx.data(1.27 GB) 与 tokenizer.json(11.4 MB, LFS) 不推，
+# 若有人在仓库里 `git lfs pull` 拉下来，也不会被 `git add -A` 意外收进去。
+fmodel/qwen2_exported_model_cuda/model.onnx.data
+fmodel/qwen2_exported_model_cuda/tokenizer.json
+
+# ---- icraft compile 产物：`icraft compile Qwen2-0.5B_decoder.toml` 会生成 jr_path/（7.2 GB）----
+jr_path/
+
+# ---- iCraft CLI 运行日志（本机编译时落在工作树里的 .icraft/、hardopLog/）----
+.icraft/
+hardopLog/
+
+# ---- Python ----
+__pycache__/
+*.pyc
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
