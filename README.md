@@ -48,7 +48,7 @@ pandas＋matplotlib，且 matplotlib 首次 import 还会建字体缓存。
 | 件 | 字节 | md5 | 哪来 |
 |---|---|---|---|
 | `Qwen2-0.5B-decoder_ZG.raw` | 1,314,012,420 | `2b107ec676de2b4dc35b772402b25b92` | `icraft compile` 产物；板上在 `/root/qwen2/jr_path/decode/` |
-| `Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | 同上；正本在 `repos/HA4FPAI/lang/llm/models/Qwen2/board/` |
+| `Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | 同上；正本在 `repos/HA4FPAI/lang/llm/models/Qwen2_0.5B_zg3.36.1_axi_demo/board/` |
 | `fmodel/qwen2_exported_model_cuda/model.onnx.data` | 1.27 GB | — | 上游 LFS，`git lfs pull` |
 | `fmodel/qwen2_exported_model_cuda/tokenizer.json` | 11.4 MB | `7875a23b…` | 上游 LFS；`config/…/tokenizer.json` 是同内容非 LFS 副本 |
 
@@ -65,7 +65,7 @@ pandas＋matplotlib，且 matplotlib 首次 import 还会建字体缓存。
 /root/qwen2/board/npuserv_adapter.py
 # 3) 让 registry 的相对路径解析得到
 mkdir -p /root/llm/models
-ln -s /root/qwen2 /root/llm/models/Qwen2
+ln -s /root/qwen2 /root/llm/models/Qwen2_0.5B_zg3.36.1_axi_demo
 ```
 
 `jr_path/decode/` 里的 `.raw`（1.31 GB）与 `.json`（2.18 MB）不随本仓分发，按 §2 表取。
@@ -78,7 +78,7 @@ ln -s /root/qwen2 /root/llm/models/Qwen2
 ```json
 {
   "id": "qwen2-0.5b",
-  "adapter": "llm/models/Qwen2/board/npuserv_adapter.py",
+  "adapter": "llm/models/Qwen2_0.5B_zg3.36.1_axi_demo/board/npuserv_adapter.py",
   "compiled_with": "icraft 3.36.1 -- vendor's own 件",
   "artifacts": {
     "decode_json": "/root/qwen2/jr_path/decode/Qwen2-0.5B-decoder_ZG.json",
@@ -139,6 +139,6 @@ curl -s -XPOST localhost:18082/unload   -d '{"model":"qwen2-0.5b"}'
 - **上游 commit**：`664a4c4`（"feat: 新增适用于v3.36.1的Qwen2_0.5B-axi上板示例"），本仓 2026-11-04 镜像
 - **上游 LICENSE**：Apache-2.0（`Copyright 2024 Alibaba Cloud`），见本仓 `LICENSE`
   （与上游 `config/Qwen2-0___5B-Instruct/LICENSE` 同文）
-- **正本**：`repos/HA4FPAI/lang/llm/models/Qwen2/`（同内容 ＋ 板端 daemon／桌面客户端／patch／
+- **正本**：`repos/HA4FPAI/lang/llm/models/Qwen2_0.5B_zg3.36.1_axi_demo/`（同名同结构；同内容 ＋ 板端 daemon／桌面客户端／patch／
   `MANIFEST.md5`／完整记录 README）
 - **台账**：`wiki/PS/板端我方代码与产物台账.md` §卅八（daemon 链与四次就绪）、§卅九（npuserv 接线）
