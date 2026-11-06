@@ -13,7 +13,6 @@ sys.path.append(R"./modelzoo_utils")
 from pyrtutils.icraft_utils import *  
 from pyrtutils.utils import *
 from pyrtutils.et_device import * 
-from pyrtutils.calctime_utils import *
 
 
 class ModelConfig:
@@ -362,7 +361,7 @@ class DecodeOnlySessionManager:
         # 逐字符处理prompt
         for i, token in enumerate(prompt_tokens):
             # 准备输入
-            token_dynamic_fm = np.array([[1, i+1]], dtype=np.float32)  # seq_len=1, pos=i
+            token_dynamic_fm = np.array([[1, i+1, 0]], dtype=np.float32)  # ZG v_id1 is fp32[1,3]; 3rd elem unread by the graph
             input_ids = np.array([[token]], dtype=np.int64)
             
             # 创建feed dict
@@ -414,7 +413,7 @@ class DecodeOnlySessionManager:
             raise RuntimeError("Decode session not initialized")
         #准备输入 
         decode_seq_len = 1
-        token_dynamic_fm = np.array([[decode_seq_len, seq_pos]], dtype=np.float32)
+        token_dynamic_fm = np.array([[decode_seq_len, seq_pos, 0]], dtype=np.float32)
         input_ids = np.array([[input_token]], dtype=np.float32)
 
         feed = self._create_feed_dict(input_ids, token_dynamic_fm, kv_cache)
