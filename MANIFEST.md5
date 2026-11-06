@@ -7,8 +7,9 @@ c4130b7b2917cab14a37664ff9d8b641  ./.gitignore
 0fb29a74e54bcc6547b79fec358aa0d1  ./LICENSE
 1603f01a85d95de8431c42eab4c32f8b  ./NOTICE
 7e7bdf8d4a4acfc519373e1233b08ad8  ./Qwen2-0.5B_decoder.toml
-9545166822718680d1be7d2870ae034f  ./README.md
-3b62981cd5b30d8bb8073ec9b987df47  ./WEIGHTS.md
+31bff997872ee943f616595764f88aa6  ./README.md
+b5373c700aa9ed3637492765bbca43a2  ./WEIGHTS.md
+24bf0b6b3d5990056fc66229a88f1020  ./board/Qwen2-0.5B-decoder_ZG.json
 f84ffd9539d9828ba3cd87de50c62948  ./board/mem_watch.sh
 a5a1767a95b242f42e6dd1d82dbe8b70  ./board/npuserv_adapter.py
 0663cb58218a723dbd48303f06e0650e  ./board/qwen2_chat.py
@@ -78,6 +79,12 @@ d3d1aeb1eb5d34e49cc95994dc788629  ./modelzoo_utils/task_queue.hpp
 d405146fe3627267772922fdd01ba90a  ./patch/qwen2_infer_162.diff
 8826fae62c1ecd79666b3640e2aa296e  ./patch/qwen2_infer_pad3_196.diff
 597eeb3b164311f0882ff32e814f2b26  ./qwen2_infer_decode_only_axi_pad3.py
+b9e9652ca3611b29209fd62efc1d72eb  ./ref/compile.err
+a017961a7bf7206aa1ec6a840ccd9192  ./ref/compile.out
+315f00a9da817da5023151e133439e98  ./ref/icraft-logs/logs/Qwen2-0.5B-decoder/Qwen2-0.5B-decoder_quantize_ftmps.csv
+d77f655aad4e06b6a9031da70ba7ce5b  ./ref/icraft-logs/logs/Qwen2-0.5B-decoder/Qwen2-0.5B-decoder_quantize_mix_config.csv
+62179d0585b29a66bf9f2473f8c7710a  ./ref/icraft-logs/logs/Qwen2-0.5B-decoder/Qwen2-0.5B-decoder_quantize_raws.csv
+9e649638578c3c22f92fd597307f6fb8  ./ref/icraft-logs/logs/Qwen2-0.5B/ftmp_match.txt
 6f50a2146e5a3ece0b14b2f400abd137  ./ref/vendor-README.md
 6af895acb87804cce4333d5160336ce9  ./ref/vendor-gitattributes.txt
 2c55244d9d6cd2e8208263ac9befd326  ./ref/vendor-githooks/post-checkout

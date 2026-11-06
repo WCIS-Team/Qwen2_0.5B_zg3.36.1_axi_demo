@@ -29,8 +29,8 @@ size 988097824
 
 | 件 | 字节 | md5 | 在仓里？ | 怎么拿 |
 |---|---|---|---|---|
-| `Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | **不在** | 与 `.raw` 同一次 `icraft compile` 的两个产物；或从板 `/root/qwen2/jr_path/decode/` 拷 |
-| `Qwen2-0.5B-decoder_ZG.raw` | 1,314,012,420 | `2b107ec676de2b4dc35b772402b25b92` | **不在**（体积 ＋ 属工具链输出，不发布） | ① 重编：`icraft compile Qwen2-0.5B_decoder.toml`（iCraft 3.39.0，本机 Windows CLI）；② 从板 `/root/qwen2/jr_path/decode/` 拷；③ 本机盘 `S:\apps\llm\agentwork\qwen\repo\jr_path\decode\`（2026-10-11 20:04 那份） |
+| `board/Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | **在** | 直接用 |
+| `Qwen2-0.5B-decoder_ZG.raw` | 1,314,012,420 | `2b107ec676de2b4dc35b772402b25b92` | **不在**（体积） | ① 重编：`icraft compile Qwen2-0.5B_decoder.toml`（iCraft 3.39.0，本机 Windows CLI）；② 从板 `/root/qwen2/jr_path/decode/` 拷；③ 本机盘 `S:\apps\llm\agentwork\qwen\repo\jr_path\decode\`（2026-10-11 20:04 那份） |
 | `config/Qwen2-0___5B-Instruct/tokenizer.json` | 7,028,015 | `1c74fd33061313fafc6e2561d1ac3164` | 在 | 直接用（板端 `tokenizers` 0.20.3 读） |
 | `qwen2_infer_decode_only_axi_pad3.py` | 23,549 | `597eeb3b164311f0882ff32e814f2b26` | 在 | 直接用（板上部署名 `qwen2_infer_pad3.py`） |
 | `board/npuserv_adapter.py` | 9,293 | `a5a1767a95b242f42e6dd1d82dbe8b71` | 在 | 直接用 |
