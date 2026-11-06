@@ -1,0 +1,11 @@
+Qwen2 board port (iCraft ZG330 / FMQL30TAI)
+
+This directory is a deployment subset / port of the Qwen2-0.5B model for the
+iCraft ZG330 (FMQL30TAI) NPU. Original model:
+
+  Qwen2-0.5B  (Copyright 2024 Alibaba Cloud)
+  Licensed under the Apache License, Version 2.0.
+  https://huggingface.co/Qwen/Qwen2-0.5B
+
+Cross-platform (iCraft) deployment modifications by the WCIS project.
+The full Apache-2.0 license text is in ./LICENSE.

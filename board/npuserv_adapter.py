@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """npuserv adapter: Qwen2-0.5B decoder (ZG330) on the board.
 
-The driver is the vendor script itself -- `board/qwen2_infer_decode_only_axi_pad3.py`,
+The driver is the vendor script itself -- `qwen2_infer_decode_only_axi_pad3.py` (repo root,
 which is `qwen2_infer_decode_only_axi.py` with `pyrtutils` imports dropped and
 `token_dynamic_fm` widened to 3 fp32 = 12 B (ZG declares `[1,3]`; the vendor fed 8 B and
 the board rejects it -- 台账 #196).  This adapter only turns a npuserv request into that

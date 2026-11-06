@@ -8,6 +8,8 @@
    版本），并新增 `board/npuserv_adapter.py`——把这颗件接上 `lang/npuserv`，可以在板上
    `/load` → `/generate` → `/unload`。
 
+**要跑起来缺什么** → [`WEIGHTS.md`](WEIGHTS.md)（上游权重出处 ＋ 编译件 `.raw` 的 md5／取法）。
+
 板上实测（悟净 113，2026-11-06）：`/load` 137.4 s（`apply_s` 137.0），
 `/generate {"text":"你是谁？","max_new":24}` 出 17 token／6.3 s，
 文本 `我是阿里云开发的超大规模语言模型，我叫通义千问。`，`/unload` 后内存全部归还。
@@ -33,22 +35,34 @@ pandas＋matplotlib，且 matplotlib 首次 import 还会建字体缓存。
 
 ## 2. 文件与 md5
 
+**大件不在这里**：权重（LFS 指针）、编译件（`.raw`）的出处、校验与取法见 [`WEIGHTS.md`](WEIGHTS.md)。
+`MANIFEST.md5` 是本仓入库件的逐件校验表。
+
+**跑板端要用的一套**：
+
 | 文件 | 字节 | md5 | 说明 |
 |---|---|---|---|
 | `qwen2_infer_decode_only_axi_pad3.py` | 23,549 | `597eeb3b164311f0882ff32e814f2b26` | 合并后的驱动（板上部署名 `/root/qwen2/qwen2_infer_pad3.py`，同字节） |
-| `board/npuserv_adapter.py` | 9,288 | `668fc5d749bdc1d53846164acee89f78` | npuserv 适配器，见 §4 |
+| `board/npuserv_adapter.py` | 9,293 | `a5a1767a95b242f42e6dd1d82dbe8b70` | npuserv 适配器，见 §4；板上在跑的就是这一颗 |
 | `modelzoo_utils/pyrtutils/__init__.py` | 97 | `c6d5ad12c216dcb3a72c15203bcbcf2a` | 删过 import 的版本 |
 | `modelzoo_utils/pyrtutils/utils/tools.py` | 365 | `77540af7c50db5366be437fc4a4ef7cf` | 删过 import 的版本 |
 | `config/Qwen2-0___5B-Instruct/tokenizer.json` | 7,028,015 | `1c74fd33061313fafc6e2561d1ac3164` | 板端 `tokenizers` 0.20.3 读这颗（非 LFS 副本） |
 | `config/Qwen2-0___5B-Instruct/config.json` | 659 | `ac22e24237a5c688f861b4aaf45df9a9` | 超参 |
 | `Qwen2-0.5B_decoder.toml` | 1,060 | `7e7bdf8d4a4acfc519373e1233b08ad8` | `icraft compile` 的摄取约定 |
+| `board/Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | 图描述；与板上 `/root/qwen2/jr_path/decode/` 同字节 |
 
-**不在本仓的件**（体积或 LFS）：
+**板上那套进程与工具的源码也在本仓 `board/`**（2026-11-06 曾因目录改子模块而掉出，现补回）：
+`qwen2_chatd.py`（22,108／`524c5a74…`，daemon）、`qwen2_chat.py`（21,845／`0663cb58…`，桌面客户端）、
+`qwen2_window.py`、`qwen2_faked.py`、`qwen2_infer_decode_only_axi.py`（#162 那支驱动）、`qwen_bisect.py`＋`.sh`、
+`mem_watch.sh`；差异与取证在 `patch/`（4 份 unified diff）与 `ref/`（编译日志、厂商原版驱动、厂商 README）；
+`NOTICE` 记归属。
+
+**不在本仓的件**（体积或 LFS，取法见 [`WEIGHTS.md`](WEIGHTS.md)）：
 
 | 件 | 字节 | md5 | 哪来 |
 |---|---|---|---|
-| `Qwen2-0.5B-decoder_ZG.raw` | 1,314,012,420 | `2b107ec676de2b4dc35b772402b25b92` | `icraft compile` 产物；板上在 `/root/qwen2/jr_path/decode/` |
-| `Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | 同上；正本在 `repos/HA4FPAI/lang/llm/models/Qwen2_0.5B_zg3.36.1_axi_demo/board/` |
+| `Qwen2-0.5B-decoder_ZG.raw` | 1,314,012,420 | `2b107ec676de2b4dc35b772402b25b92` | `icraft compile` 产物；或从板 `/root/qwen2/jr_path/decode/` 拷 |
+| `config/Qwen2-0___5B-Instruct/model.safetensors` | 988,097,824 | LFS 指针 `sha256:130282af…` | `git lfs pull`（上游 demo 仓自带） |
 | `fmodel/qwen2_exported_model_cuda/model.onnx.data` | 1.27 GB | — | 上游 LFS，`git lfs pull` |
 | `fmodel/qwen2_exported_model_cuda/tokenizer.json` | 11.4 MB | `7875a23b…` | 上游 LFS；`config/…/tokenizer.json` 是同内容非 LFS 副本 |
 

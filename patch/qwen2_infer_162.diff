@@ -1,0 +1,10 @@
+--- vendor/qwen2_infer_decode_only_axi.py
++++ board/qwen2_infer_decode_only_axi.py
+@@ -13,7 +13,6 @@
+ from pyrtutils.icraft_utils import *  
+ from pyrtutils.utils import *
+ from pyrtutils.et_device import * 
+-from pyrtutils.calctime_utils import *
+ 
+ 
+ class ModelConfig:
