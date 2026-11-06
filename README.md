@@ -49,19 +49,20 @@ pandas＋matplotlib，且 matplotlib 首次 import 还会建字体缓存。
 | `config/Qwen2-0___5B-Instruct/tokenizer.json` | 7,028,015 | `1c74fd33061313fafc6e2561d1ac3164` | 板端 `tokenizers` 0.20.3 读这颗（非 LFS 副本） |
 | `config/Qwen2-0___5B-Instruct/config.json` | 659 | `ac22e24237a5c688f861b4aaf45df9a9` | 超参 |
 | `Qwen2-0.5B_decoder.toml` | 1,060 | `7e7bdf8d4a4acfc519373e1233b08ad8` | `icraft compile` 的摄取约定 |
-| `board/Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | 图描述；与板上 `/root/qwen2/jr_path/decode/` 同字节 |
+
+**编译产物（`_ZG.json` ＋ `.raw`）不在本仓**：它们是 iCraft 在本机编出来的东西，不属于厂商发布件；取法见 [`WEIGHTS.md`](WEIGHTS.md) §2。
 
 **板上那套进程与工具的源码也在本仓 `board/`**（2026-11-06 曾因目录改子模块而掉出，现补回）：
 `qwen2_chatd.py`（22,108／`524c5a74…`，daemon）、`qwen2_chat.py`（21,845／`0663cb58…`，桌面客户端）、
 `qwen2_window.py`、`qwen2_faked.py`、`qwen2_infer_decode_only_axi.py`（#162 那支驱动）、`qwen_bisect.py`＋`.sh`、
-`mem_watch.sh`；差异与取证在 `patch/`（4 份 unified diff）与 `ref/`（编译日志、厂商原版驱动、厂商 README）；
-`NOTICE` 记归属。
+`mem_watch.sh`；差异在 `patch/`（4 份 unified diff）；`ref/` 只留厂商发布件本身（原版驱动、厂商 README、LFS 规则、hooks），**编译日志与量化表不发布**；`NOTICE` 记归属。
 
 **不在本仓的件**（体积或 LFS，取法见 [`WEIGHTS.md`](WEIGHTS.md)）：
 
 | 件 | 字节 | md5 | 哪来 |
 |---|---|---|---|
 | `Qwen2-0.5B-decoder_ZG.raw` | 1,314,012,420 | `2b107ec676de2b4dc35b772402b25b92` | `icraft compile` 产物；或从板 `/root/qwen2/jr_path/decode/` 拷 |
+| `Qwen2-0.5B-decoder_ZG.json` | 2,183,817 | `24bf0b6b3d5990056fc66229a88f1020` | 同一份编译的另一半；板上在 `/root/qwen2/jr_path/decode/` |
 | `config/Qwen2-0___5B-Instruct/model.safetensors` | 988,097,824 | LFS 指针 `sha256:130282af…` | `git lfs pull`（上游 demo 仓自带） |
 | `fmodel/qwen2_exported_model_cuda/model.onnx.data` | 1.27 GB | — | 上游 LFS，`git lfs pull` |
 | `fmodel/qwen2_exported_model_cuda/tokenizer.json` | 11.4 MB | `7875a23b…` | 上游 LFS；`config/…/tokenizer.json` 是同内容非 LFS 副本 |
