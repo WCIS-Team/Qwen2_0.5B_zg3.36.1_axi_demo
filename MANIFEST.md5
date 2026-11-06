@@ -87,8 +87,4 @@ d77f655aad4e06b6a9031da70ba7ce5b  ./ref/icraft-logs/logs/Qwen2-0.5B-decoder/Qwen
 9e649638578c3c22f92fd597307f6fb8  ./ref/icraft-logs/logs/Qwen2-0.5B/ftmp_match.txt
 6f50a2146e5a3ece0b14b2f400abd137  ./ref/vendor-README.md
 6af895acb87804cce4333d5160336ce9  ./ref/vendor-gitattributes.txt
-2c55244d9d6cd2e8208263ac9befd326  ./ref/vendor-githooks/post-checkout
-fd2127fc0192762cd927e4d061b29b42  ./ref/vendor-githooks/post-commit
-1c75281027dd3a47e6d2133d2c07c2ba  ./ref/vendor-githooks/post-merge
-43e1c8572c8fefa9e3e217e08afda6dd  ./ref/vendor-githooks/pre-push
 501fe40640941320a6f703d5d5c5c016  ./ref/vendor-original-driver.py
